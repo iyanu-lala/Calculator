@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+          <style>
+        body {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1e293b;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            background: #e0e5ec;
+            padding: 28px;
+            border-radius: 30px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            width: 300px;
+        }
+
+        #input {
+            width: 100%;
+            height: 75px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            padding: 16px;
+
+            font-size: 30px;
+            text-align: right;
+            box-shadow: inset 4px 4px 10px #0f172a, inset -2px -2px 6px rgba(255, 255, 255, 0.08);;
+            border: none;
+            border-radius: 8px;
+            background: #1e293b;
+             color: #38bdf8; 
+             text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            height: 55px;
+            /* width: 70px; */
+            font-size: 20px;
+            border: none;
+            border-radius: 20%;
+            cursor: pointer;
+            background: #e0e5ec;
+            color: #2d3748;
+            font-weight: bold;
+            /* text-shadow: 0 0 8px rgba(56, 189, 248, 0.5); */
+             box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .operator {
+            background: #e0e5ec;
+        }
+
+        .operator:hover {
+            background: #a09b93;
+        }
+
+        .clear {
+            background: #d9534f;
+        }
+
+        .clear:hover {
+            background: #c9302c;
+        }
+        .equal {
+    grid-column: span 3;
+    border-radius: 16px;
+}
+    </style>
+</head>
+
+<body>
+<div class="calculator">
+    <input type="text" name="" id="input">
+    <div class="buttons">
+    <button onclick="num(7)">7</button>
+    <button onclick="num(8)">8</button>
+    <button onclick="num(9)">9</button>
+    <button onclick="num('/')" class="operator">/</button>
+    
+    <button onclick="num(4)">4</button>
+    <button onclick="num(5)">5</button>
+    <button onclick="num(6)">6</button>
+    <button onclick="num('*')" class="operator">*</button>
+    
+    <button onclick="num(1)">1</button>
+    <button onclick="num(2)">2</button>
+    <button onclick="num(3)">3</button>
+    <button onclick="num('-')" class="operator">-</button>
+
+    <button onclick="clearInput()" class="operator">AC</button>
+    <button onclick="num(0)">0</button>
+    <button onclick="deleteLast()">DEL</button>
+    <button onclick="num('+')" class="operator">+</button>
+
+    <button onclick="equal()" class="operator"> =</button>
+    <button onclick="num('.')">.</button>
+    </div>
+</div>
+    <script>
+        function num(reg) {
+            let userInput = document.getElementById('input')
+            userInput.value += reg
+            console.log(reg)
+        }
+
+        function equal(){
+             let userInput = document.getElementById('input')
+            userInput.value = eval(userInput.value)
+            }
+        
+        function clearInput(){
+            document.getElementById('input').value= ""
+        }
+
+        function deleteLast(){
+            let userInput = document.getElementById('input')
+            let del = userInput.value.split('');
+            del.pop()
+            userInput.value = del.join('')
+        }
+    </script>
+</body>
+
+</html>
